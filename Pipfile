@@ -9,6 +9,8 @@ flake8 = "*"
 [packages]
 django = "*"
 requests = "*"
+pillow = "*"
+django-countries = "*"
 
 [requires]
 python_version = "3.8"

@@ -49,12 +49,24 @@ class HouseRule(AbstractItem):
         verbose_name = "House Rule"
 
 
+class Photo(core_models.TimeStampedModel):
+
+    """ Photo Model Definition """
+
+    caption = models.CharField(max_length=80)
+    file = models.ImageField(upload_to="room_photos")
+    room = models.ForeignKey("Room", related_name="photos", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.caption
+
+
 class Room(core_models.TimeStampedModel):
 
     """ Room Model Definition """
 
     name = models.CharField(max_length=140)
-    descriptrion = models.TextField()
+    description = models.TextField()
     country = CountryField()
     city = models.CharField(max_length=80)
     price = models.IntegerField()
@@ -76,32 +88,18 @@ class Room(core_models.TimeStampedModel):
     facilities = models.ManyToManyField("Facility", related_name="rooms", blank=True)
     house_rules = models.ManyToManyField("HouseRule", related_name="rooms", blank=True)
 
-    def save(self, *args, **kwargs):
-
-        super(ModelName, self).save(*args, **kwargs)  # Call the real save() method
-
     def __str__(self):
         return self.name
 
-    def save(self, *args, **kargs):
+    def save(self, *args, **kwargs):
         self.city = str.capitalize(self.city)
         super().save(*args, **kwargs)
 
     def total_rating(self):
         all_reviews = self.reviews.all()
         all_ratings = 0
-        for review in all_reviews:
-            all_ratings += review.rating_average()
-        return all_ratings / len(all_reviews)
-
-
-class Photo(core_models.TimeStampedModel):
-
-    """ Photo Model Definition """
-
-    caption = models.CharField(max_length=80)
-    file = models.ImageField(upload_to="room_photos")
-    room = models.ForeignKey("Room", related_name="photos", on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.caption
+        if len(all_reviews) > 0:
+            for review in all_reviews:
+                all_ratings += review.rating_average()
+            return round(all_ratings / len(all_reviews))
+        return 0

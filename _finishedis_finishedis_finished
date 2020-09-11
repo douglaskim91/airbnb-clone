@@ -1,0 +1,29 @@
+[33mcommit 1f5e129c5b035eb00e3e47c8ef8f0f70c1d2709d[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: hoon <douglaskim91@gmail.com>
+Date:   Thu Sep 10 23:47:07 2020 +0900
+
+    make django_seeds by commands
+
+[33mcommit b35ede574f78c5dc2eb8bca7985cb7e45b28ab02[m
+Author: hoon <douglaskim91@gmail.com>
+Date:   Tue Sep 8 22:32:46 2020 +0900
+
+    make models & admins
+
+[33mcommit bb7f5421018060eb1d58a7e74be872511c665b71[m
+Author: hoon <douglaskim91@gmail.com>
+Date:   Sun Aug 30 16:11:38 2020 +0900
+
+    Create apps
+
+[33mcommit fc5b29121fbb869998acbb7c8e37321941710c6b[m
+Author: hoon <douglaskim91@gmail.com>
+Date:   Sun Aug 30 12:25:54 2020 +0900
+
+    Make a gitignore
+
+[33mcommit 2e028f381b984d58e145dc0721a67606ad801f83[m
+Author: hoon <douglaskim91@gmail.com>
+Date:   Sun Aug 30 12:02:44 2020 +0900
+
+    Creating my Env and Installing Django

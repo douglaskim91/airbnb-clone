@@ -142,3 +142,4 @@ cython_debug/
 
 # Upload files
 uploads/
+node_modules/

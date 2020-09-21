@@ -55,7 +55,6 @@ class RoomAdmin(admin.ModelAdmin):
         (
             "More About the Space",
             {
-                "classes": ("collapse",),
                 "fields": ("amenities", "facilities", "house_rules"),
             },
         ),
@@ -80,6 +79,7 @@ class RoomAdmin(admin.ModelAdmin):
         "instant_book",
         "count_amenities",
         "count_photos",
+        "total_rating",
     )
 
     list_filter = (
@@ -97,7 +97,7 @@ class RoomAdmin(admin.ModelAdmin):
 
     search_fields = (
         "=city",
-        "^host_username",
+        "^host__username",
     )
 
     filter_horizontal = (
@@ -108,6 +108,8 @@ class RoomAdmin(admin.ModelAdmin):
 
     def count_amenities(self, obj):
         return obj.amenities.count()
+
+    count_amenities.short_description = "Amenity Count"
 
     def count_photos(self, obj):
         return obj.photos.count()
